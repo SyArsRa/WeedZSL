@@ -6,7 +6,7 @@
 
 WeedZSL reframes weed detection as an open-set recognition problem using generalized zero-shot learning (GZSL). The pipeline performs vegetation segmentation, pseudo-label classification using CNNs, and zero-shot semantic mapping using multimodal embeddings. It supports unseen species recognition and enables inference using various foundation models.
 
----
+
 
 ## Overview
 
@@ -20,40 +20,7 @@ WeedZSL is designed to support the detection, classification, and segmentation o
 - **Zero-Shot Detection**: Use large vision-language models for unseen weed species
 - **Inference Pipeline**: End-to-end inference over new images
 
----
 
-## Repository Structure
-
-```
-WeedZSL/
-├── classification_models/          # CNN architectures for pseudo-label generation
-│   ├── MobileNet.py
-│   ├── ResNet18.py
-│   ├── ShuffleNet.py
-│   ├── ShuffleNet_SE.py
-│   ├── ShuffleNet_SEPCONV.py
-│   ├── ShuffleNet_SEPCONV_SE.py
-│   └── SqueezeNet.py
-├── embedding_models/               # Multimodal encoders and LLM interfaces
-│   ├── embedding_clip.py
-│   ├── embeddings_gemini.py
-│   ├── embeddings_imagebind.py
-│   ├── embeddings_llama.py
-│   ├── embeddings_openclip.py
-│   └── embeddings_siglip.py
-├── datasets/                       # Dataset folder for classification/segmentation
-├── segmentation.py                 # ExG-based vegetation segmentation
-├── classification.py               # Pseudo-label generation pipeline
-├── class_mapping.py                # Zero-shot semantic alignment
-├── evaluate_embedding_models.py    # Multimodal model performance comparison
-├── infer.py                        # End-to-end inference pipeline
-├── exg_testing.py                  # Segmentation evaluation
-├── train.ipynb                     # Jupyter notebook for training classifiers
-├── requirements.txt                # Python dependencies
-└── README.md
-```
-
----
 
 ## Setup
 
@@ -63,7 +30,7 @@ WeedZSL/
 - CUDA-compatible GPU (recommended)
 - 24GB+ RAM
 
----
+
 
 ## Data Preparation
 
@@ -104,9 +71,8 @@ Key parameters can be adjusted in the respective scripts:
 - **Segmentation**:  
   Prepare RGB images and corresponding binary masks.
 
----
 
-## Usage
+
 
 ## Multimodal Model Setup
 
@@ -128,7 +94,6 @@ Key parameters can be adjusted in the respective scripts:
 GOOGLE_API_KEY=
 GEMINI_API_KEY=
 HF_TOKEN=
----
 
 ## External Datasets
 
@@ -149,19 +114,15 @@ This project uses both public and custom datasets:
 4. **Custom Field Data**  
    - Wheat, chili, tomato images under real-world conditions
 
----
 
 ## Citation
 
 To cite this project, please contact the authors. Citation details will be released post-publication.
 
----
-
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
----
 
 ## Acknowledgments
 
