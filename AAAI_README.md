@@ -124,6 +124,10 @@ Key parameters can be adjusted in the respective scripts:
 
 - Setup instructions available at: https://github.com/facebookresearch/ImageBind
 
+## .env requires the following vars
+GOOGLE_API_KEY=
+GEMINI_API_KEY=
+HF_TOKEN=
 ---
 
 ## External Datasets
