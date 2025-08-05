@@ -1,3 +1,4 @@
+# Mapping of class IDs to names and colors for the CropWeed dataset
 
 
 ID_TO_NAME_MAPPING = {
@@ -85,5 +86,5 @@ ID_TO_NAME_MAPPING = {
     81: ('Field mustard', (159, 255, 0)),
     82: ('Common dandelion', (202, 255, 0))
 }
-ID_TO_NAME = {idx: nm for idx, (nm, _) in ID_TO_NAME_MAPPING.items()}
-NAME_TO_ID = {nm: idx for idx, (nm, _) in ID_TO_NAME_MAPPING.items()}
+ID_TO_NAME = {idx: nm.lower() for idx, (nm, _) in ID_TO_NAME_MAPPING.items()}
+NAME_TO_ID = {nm.lower(): idx for idx, (nm, _) in ID_TO_NAME_MAPPING.items()}

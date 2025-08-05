@@ -1,3 +1,5 @@
+# Helper functions for classification tasks
+
 import os
 import cv2
 import numpy as np
@@ -17,7 +19,7 @@ from classification_models.SqueezeNet import SqueezeNet
 
 from class_mapping import ID_TO_NAME, NAME_TO_ID
 
-# --- Hyperparameters (copied from infer.py for now, will be removed if not needed) ---
+# --- Hyperparameters ---
 COMPONENTS_DIR = "temp_veg_components" # This is still needed here for classify_components
 
 inference_transforms = transforms.Compose([

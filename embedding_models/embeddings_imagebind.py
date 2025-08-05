@@ -56,7 +56,7 @@ def find_matches(query_embedding: list[float],
 def get_prompt(crop_name):
     return f"A top-down view of a healthy {crop_name} plant at an early to middle growth stage, with visible leaves and structure"
 
-def get_similar_classes_imagebind(candidates_classes: list[str], target_class: str):
+def compare_classes(candidates_classes: list[str], target_class: str, threshold: int = 0.08):
     
     prompt = get_prompt(target_class)
     query_embedding = get_embedding(prompt)
@@ -69,7 +69,7 @@ def get_similar_classes_imagebind(candidates_classes: list[str], target_class: s
     if not corpus_embeddings:
         return []
 
-    matches = find_matches(query_embedding, corpus_embeddings, threshold=0.2)
+    matches = find_matches(query_embedding, corpus_embeddings, threshold=threshold)
     if not matches:
         return []
 
@@ -80,7 +80,7 @@ def get_similar_classes_imagebind(candidates_classes: list[str], target_class: s
 
     similar_matches = []
     for idx, score in matches[1:]:
-        if score >= closest_match_score - 0.08:
+        if score >= closest_match_score - threshold:
             similar_matches.append(candidates_classes[idx])
 
     return [closest_match_class] + similar_matches

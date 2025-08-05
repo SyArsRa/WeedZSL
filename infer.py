@@ -1,3 +1,6 @@
+# This inference script integrates the entire pipeline for processing images, detecting vegetation, 
+# extracting components, classifying them, and visualizing results.
+
 import os
 import shutil
 import cv2

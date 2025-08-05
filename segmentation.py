@@ -1,17 +1,17 @@
+# THis file contains functions for segmenting vegetation in images using the Excess Green Index (ExG) and connected components analysis.
+
 import os
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ─── Hyperparameters ─────────────────────────────────────────────────────────────
-IMAGE_PATH = r"D:\FYP\Dataset\weed\DJI_202412191545_004\DJI_20241219154909_0003_D.JPG"
+# ─── Hyperparameters ────────────────────────────────────────
 SEGMENTATION_OUTPUT_DIR = "segmentation_results"
 COMPONENTS_DIR = "temp_veg_components"  # Directory for temporary vegetation components
 RESIZE_DIM = 1000
-EXG_THRESH = 25  # From infer.py
-MIN_AREA_THRESHOLD = 50  # From infer.py
-TARGET_SEGMENT_SIZE = 256
-
+EXG_THRESH = 30  # From infer.py
+MIN_AREA_THRESHOLD = 16  # From infer.py
+TARGET_SEGMENT_SIZE = 224  # For segment extraction
 
 # ─── VEGETATION DETECTION FUNCTIONS ───────────────────────────────────────────────
 def generate_exg_vegetation_mask(bgr_img, exg_thresh=EXG_THRESH):
@@ -292,7 +292,7 @@ def visualize_detection_results(
 
 
 # ─── FULL PIPELINE ───────────────────────────────────────────────────────────────
-def process_field_image(image_path: str = IMAGE_PATH) -> dict:
+def process_field_image(image_path: str) -> dict:
     img_bgr = cv2.imread(image_path)
     if img_bgr is None:
         raise ValueError(f"Cannot load image: {image_path}")

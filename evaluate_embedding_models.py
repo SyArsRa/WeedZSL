@@ -1,3 +1,8 @@
+# Code to evaluate embedding models for crop classification
+# This script processes a dataset of images, classifies them using a pre-trained model,
+# and evaluates the classification results using various embedding models.
+# This requires a dataset of images organized in folders by class,
+
 import glob
 import traceback
 import json
@@ -26,8 +31,8 @@ from embedding_models.embeddings_openclip import get_similar_classes_openclip
 from embedding_models.embeddings_slip import get_similar_classes_slip
 
 # Hyperparameters
-DATASET_PATH = r"unseen"
-MODEL_PATH = r"models\sesc.pt"
+DATASET_PATH = r"dataset\custom"
+MODEL_PATH = r"model_weights\sesc.pt"
 CLASSIFICATION_MODEL_NAME = "shufflenet_sepconv_se"
 EMBEDDING_MODEL_NAME = "gemini"
 
