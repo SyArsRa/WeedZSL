@@ -9,7 +9,7 @@ This repository implements the methodology described in our paper: *"A Multi-Mod
 
 
 
----
+
 
 ## Overview
 
@@ -22,37 +22,8 @@ WeedZSL addresses the limitations of supervised detectors by reframing weed dete
 - **Multimodal Zero-Shot Mapping**: Semantic alignment between visual and textual representations
 - **Unseen Species Support**: Generalization to new weed species without retraining
 
----
 
-## Repository Structure
 
-```
-WeedZSL/
-├── classification_models/          # CNN architectures for pseudo-label generation
-│   ├── MobileNet.py               # MobileNet V2 implementation
-│   ├── ResNet18.py                # ResNet-18 architecture
-│   ├── ShuffleNet.py              # Standard ShuffleNet V2
-│   ├── ShuffleNet_SE.py           # ShuffleNet + Squeeze-and-Excitation
-│   ├── ShuffleNet_SEPCONV.py      # ShuffleNet + Separable Convolutions
-│   ├── ShuffleNet_SEPCONV_SE.py   # ShuffleNet + SE + SepConv (best variant)
-│   └── SqueezeNet.py              # SqueezeNet architecture
-├── embedding_models/              # Multimodal encoders and LLM interfaces
-│   ├── embedding_clip.py          # CLIP encoder interface
-│   ├── embeddings_gemini.py       # Gemini 2.5 Flash API wrapper
-│   ├── embeddings_imagebind.py    # ImageBind encoder
-│   ├── embeddings_llama.py        # Llama 3.2-11B Vision interface
-│   ├── embeddings_openclip.py     # OpenCLIP variants
-│   └── embeddings_siglip.py       # SigLIP encoder
-├── segmentation.py                # ExG-based vegetation segmentation
-├── classification.py              # Pseudo-label generation pipeline
-├── class_mapping.py               # Zero-shot semantic alignment
-├── infer.py                       # End-to-end inference pipeline
-├── exg_testing.py                 # Segmentation evaluation utilities
-├── requirements.txt               # Python dependencies
-└── README.md                      
-```
-
----
 
 ## Quick Start
 
@@ -87,7 +58,7 @@ WeedZSL/
    # browse the full model repo:
    # https://huggingface.co/emanfj/WeedZSLmodel
 
----
+
 
 ## Usage
 
@@ -141,7 +112,6 @@ Run the complete pipeline with a single command:
 ```bash
 python infer.py 
 ```
----
 
 ## Configuration
 
@@ -182,7 +152,6 @@ This project utilizes several open-source agricultural datasets:
    - Wheat: 224 instances (DJI Mavic Pro, 1m height)
    - Chili & Tomato: 337 instances (greenhouse conditions)
 
----
 
 
 ## Contributing
@@ -197,20 +166,20 @@ We welcome contributions! To get started:
 4. Run tests: `pytest tests/`
 5. Submit a pull request
 
----
+
 
 ## Citation
 
 If you use WeedZSL in your research, please contact us for citation reference.
 
 
----
+
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
+
 
 ## Acknowledgments
 
