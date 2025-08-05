@@ -224,6 +224,20 @@ def find_connected_components(mask: np.ndarray, min_area: int = MIN_AREA_THRESHO
             boxes.append((x, y, w, h))
     return boxes, labels
 
+def letterbox_resize(image: np.ndarray, target_size: int = RESIZE_DIM) -> np.ndarray:
+    """Resize image with letterbox padding to maintain aspect ratio."""
+    h, w = image.shape[:2]
+    scale = target_size / max(h, w)
+    new_h, new_w = int(h * scale), int(w * scale)
+    resized = cv2.resize(image, (new_w, new_h), interpolation=cv2.INTER_AREA)
+    
+    # Create a canvas with the target size
+    canvas = np.zeros((target_size, target_size, 3), dtype=image.dtype)
+    y_offset = (target_size - new_h) // 2
+    x_offset = (target_size - new_w) // 2
+    canvas[y_offset:y_offset + new_h, x_offset:x_offset + new_w] = resized
+    
+    return canvas
 
 # ─── SEGMENT EXTRACTION ───────────────────────────────────────────────────────────
 def center_and_resize_segment(
@@ -235,9 +249,10 @@ def center_and_resize_segment(
     y_off = (max_dim - h) // 2
     x_off = (max_dim - w) // 2
     canvas[y_off : y_off + h, x_off : x_off + w] = seg
-    resized = cv2.resize(
-        canvas, (target_size, target_size), interpolation=cv2.INTER_AREA
-    )
+    
+    #letterbox resize to target size
+    resized = letterbox_resize(canvas, target_size)
+    
     return resized
 
 

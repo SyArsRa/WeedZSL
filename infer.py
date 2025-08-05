@@ -4,7 +4,7 @@ import cv2
 import torch
 import matplotlib.pyplot as plt
 
-from segmentation import segment_plants_by_exg_and_cc, extract_vegetation_components, create_visualization
+from segmentation import letterbox_resize, segment_plants_by_exg_and_cc, extract_vegetation_components, create_visualization
 
 #from embedding_models.embeddings_slip import get_similar_classes_slip
 #from embedding_models.embedding_clip import get_similar_classes_clip
@@ -61,10 +61,11 @@ def process_image(image_path=IMAGE_PATH,
     if img is None:
         print(f"Error: Could not load image: {image_path}")
         return None
-    img_resized = cv2.resize(img, (resize_dim, resize_dim))
+    
+    img_resized = letterbox_resize(img, resize_dim)
 
     # 2. Detect vegetation and leaves, cluster into plants
-    print("Running vegetation detection and clustering...")
+    print("Running vegetation detection...")
     results = segment_plants_by_exg_and_cc(
         img_resized,
         exg_thresh=exg_thresh

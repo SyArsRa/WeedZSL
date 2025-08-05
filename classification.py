@@ -103,7 +103,7 @@ def classify_image(model, img, device):
     return idx, class_name, confidence
 
 # Modified classify_components
-def classify_components(model_path, component_map, device='cpu', classification_model_name="shufflenet"): # Default classification_model_name
+def classify_components(model_path, component_map, device='cpu', classification_model_name="shufflenet", components_dir=COMPONENTS_DIR):
     """
     Classify all component images.
     Returns:
@@ -119,7 +119,7 @@ def classify_components(model_path, component_map, device='cpu', classification_
     reverse_map = {new_idx: orig_idx for orig_idx, new_idx in component_map.items()}
     
     # Process each component image
-    for filename in os.listdir(COMPONENTS_DIR):
+    for filename in os.listdir(components_dir):
         if not filename.startswith("component_"):
             continue
             
@@ -136,7 +136,7 @@ def classify_components(model_path, component_map, device='cpu', classification_
             continue
             
         original_idx = reverse_map[component_number]
-        image_path = os.path.join(COMPONENTS_DIR, filename)
+        image_path = os.path.join(components_dir, filename)
         
         try:
             image = Image.open(image_path)
