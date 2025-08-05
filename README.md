@@ -163,8 +163,7 @@ We welcome contributions! To get started:
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
 3. Install development dependencies: `pip install -r requirements-dev.txt`
-4. Run tests: `pytest tests/`
-5. Submit a pull request
+4. Submit a pull request
 
 
 
